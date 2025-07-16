@@ -1,3 +1,4 @@
+import 'package:fahiz_portfolio/res/constants.dart';
 import 'package:fahiz_portfolio/view/intro/components/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -51,7 +52,7 @@ class CombineSubtitleText extends StatelessWidget {
             : ShaderMask(
               shaderCallback: (bounds) {
                 return const LinearGradient(
-                  colors: [Colors.pink, Colors.blue],
+                  colors: [primaryColor, secondaryColor],
                 ).createShader(bounds);
               },
               child: const Responsive(

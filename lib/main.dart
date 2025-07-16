@@ -9,23 +9,46 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Fahiz Portfolio',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
         scaffoldBackgroundColor: bgColor,
+        primaryColor: primaryColor,
+        colorScheme: const ColorScheme(
+          brightness: Brightness.dark,
+          primary: primaryColor,
+          onPrimary: Colors.black,
+          secondary: secondaryColor,
+          onSecondary: Colors.white,
+          background: bgColor,
+          onBackground: bodyTextColor,
+          surface: darkColor,
+          onSurface: Colors.white,
+          error: Colors.redAccent,
+          onError: Colors.white,
+        ),
+        textTheme: GoogleFonts.poppinsTextTheme().apply(
+          bodyColor: bodyTextColor,
+          displayColor: Colors.white,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(color: primaryColor),
+          titleTextStyle: TextStyle(
+            color: primaryColor,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         useMaterial3: true,
-        textTheme: GoogleFonts.openSansTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Colors.white)
-            .copyWith(
-              bodyLarge: const TextStyle(color: bodyTextColor),
-              bodyMedium: const TextStyle(color: bodyTextColor),
-            ),
       ),
-
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }
