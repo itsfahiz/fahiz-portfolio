@@ -1,5 +1,4 @@
 import 'package:fahiz_portfolio/view%20model/controller.dart';
-import 'package:fahiz_portfolio/view%20model/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation_button.dart';
@@ -26,8 +25,8 @@ class NavigationButtonList extends StatelessWidget {
                 },
                 text: 'Home',
               ),
-              if (!Responsive.isLargeMobile(context))
-                NavigationTextButton(onTap: () {}, text: 'About us'),
+              // if (!Responsive.isLargeMobile(context))
+              //   NavigationTextButton(onTap: () {}, text: 'About us'),
               NavigationTextButton(
                 onTap: () {
                   controller.animateToPage(

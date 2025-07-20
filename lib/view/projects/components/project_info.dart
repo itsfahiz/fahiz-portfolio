@@ -1,4 +1,4 @@
-import 'package:fahiz_portfolio/view/projects/components/project_deatail.dart';
+import 'package:fahiz_portfolio/view/projects/components/projectDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../model/project_model.dart';
@@ -17,7 +17,7 @@ class ProjectStack extends StatelessWidget {
         controller.onHover(index, value);
       },
       onTap: () {
-        ImageViewer(context, projectList[index].image);
+        ImageViewer(context, projectList[index].thumbnail);
       },
       borderRadius: BorderRadius.circular(30),
       child: AnimatedContainer(
@@ -31,7 +31,7 @@ class ProjectStack extends StatelessWidget {
           color: bgColor,
         ),
         duration: const Duration(milliseconds: 500),
-        child: ProjectDetail(index: index),
+        child: ProjectDetailPage(project: projectList[index]),
       ),
     );
   }
