@@ -1,3 +1,4 @@
+import 'package:fahiz_portfolio/utils/social_links.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -6,14 +7,21 @@ import '../../../res/constants.dart';
 class ConnectButton extends StatelessWidget {
   const ConnectButton({super.key});
 
+  Future<void> _launchWhatsApp() async {
+    final url = Uri.parse(SocialLinks.whatsapp);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      debugPrint('Could not launch WhatsApp link');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
       child: InkWell(
-        onTap: () {
-          launchUrl(Uri.parse('https://wa.me/03054200605'));
-        },
+        onTap: _launchWhatsApp,
         borderRadius: BorderRadius.circular(defaultPadding + 10),
         child: Container(
           height: 60,

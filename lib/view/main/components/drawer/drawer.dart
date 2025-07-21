@@ -1,10 +1,9 @@
-import 'package:fahiz_portfolio/view/main/components/drawer/contact_icons.dart';
-import 'package:fahiz_portfolio/view/main/components/drawer/personal_info.dart';
+import 'package:fahiz_portfolio/view/main/components/drawer/bottom_section/contact_icons.dart';
+import 'package:fahiz_portfolio/view/main/components/drawer/middle_section/personal_info.dart';
 import 'package:flutter/material.dart';
 import '../../../../res/constants.dart';
-import 'knowledges.dart';
-import 'about.dart';
-import 'my_skill.dart';
+import 'uppersection/about.dart';
+import 'skills/my_skill.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -24,8 +23,7 @@ class CustomDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     PersonalInfo(),
-                    MySKills(),
-                    Knowledges(),
+                    MySkills(),
                     Divider(),
                     SizedBox(height: defaultPadding),
                     ContactIcon(),
