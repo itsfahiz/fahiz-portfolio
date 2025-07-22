@@ -1,3 +1,4 @@
+import 'package:fahiz_portfolio/utils/social_links.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -6,15 +7,19 @@ import '../../../res/constants.dart';
 
 class DownloadButton extends StatelessWidget {
   const DownloadButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        launchUrl(
-          Uri.parse(
-            'https://drive.google.com/file/d/1HSIe7rdk8VtrAL4DQuybfMHQgDrQ6xNs/view?usp=sharing',
-          ),
-        );
+      onTap: () async {
+        final url = Uri.parse(SocialLinks.cv);
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Could not launch CV link')),
+          );
+        }
       },
       child: Container(
         alignment: Alignment.center,
@@ -36,13 +41,14 @@ class DownloadButton extends StatelessWidget {
               blurRadius: 5,
             ),
           ],
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [primaryColor, secondaryColor],
           ),
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               'Download CV',
