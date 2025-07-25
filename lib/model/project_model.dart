@@ -10,12 +10,12 @@ class ContentBlock {
 
 class Project {
   final String name;
-  final String? subTitle; // e.g., 'Web and Native App'
+  final String? subTitle;
   final String? year;
   final String? overview;
 
-  final String thumbnail; // Required image for preview/card
-  final String bannerImage; // Required image for hero/detail
+  final String thumbnail;
+  final String bannerImage;
 
   final List<String>? techStack;
   final List<String>? features;
@@ -44,11 +44,11 @@ class Project {
 
 List<Project> projectList = [
   Project(
-    name: 'MyBayshoreCare (Mobile App)',
-    subTitle: 'Mobile App',
+    name: 'Web and Native app',
+    subTitle: 'MyBayshoreCare',
     year: '2021',
     overview:
-        'Developed for Bayshore HealthCare (Canada), this cross-platform Flutter app provides patients with secure access to assessments, care tracking, chat support, and pharmacy refill requests. Built with Flutter, Firebase, and integrated HIPAA compliance.',
+        'A digital platform for supporting users and their family members with essential everyday home and medical services.',
     thumbnail: 'assets/images/mbc/mbc.png',
     bannerImage: 'assets/images/mbc/mbc_bg.png',
     techStack: ['Flutter', 'Firebase', 'HIPAA Compliance', 'Provider'],
@@ -62,13 +62,12 @@ List<Project> projectList = [
     liveDemoLink: 'https://www.bayshore.ca/mybayshorecare/',
     link: 'https://www.bayshore.ca/mybayshorecare/',
     contentBlocks: [
-      ContentBlock(type: ContentType.sectionTitle, data: 'Overview'),
-      ContentBlock(
-        type: ContentType.text,
-        data:
-            'A comprehensive app offering patients access to key healthcare services, ensuring HIPAA-compliant secure communication and care management.',
-      ),
-
+      // ContentBlock(type: ContentType.sectionTitle, data: 'Overview'),
+      // ContentBlock(
+      //   type: ContentType.text,
+      //   data:
+      //       'A comprehensive app offering patients access to key healthcare services, ensuring HIPAA-compliant secure communication and care management.',
+      // ),
       ContentBlock(type: ContentType.sectionTitle, data: 'Objectives'),
 
       ContentBlock(type: ContentType.subSectionTitle, data: 'Problem'),
@@ -122,11 +121,11 @@ List<Project> projectList = [
   ),
 
   Project(
-    name: 'MyPath – MBC Module',
-    subTitle: 'Mobile App',
+    name: 'Web and Native app',
+    subTitle: 'MyPath',
     year: '2023',
     overview:
-        'Healthcare app, created with a goal to help people with the autoimmune neurological condition called Myasthenia Gravis.',
+        'Healthcare app allows patients and health practitioners to easily track their progress.',
     thumbnail: 'assets/images/mypath/mypath.png',
     bannerImage: 'assets/images/mypath/mypath_bg.png',
     techStack: ['Flutter', 'Firebase', 'Bayshore Design System'],
@@ -173,22 +172,74 @@ List<Project> projectList = [
       ),
     ],
   ),
+  Project(
+    name: 'Web and Native app',
+    subTitle: 'Branch Operating System (BOS)',
+    year: '2023–2025',
+    overview:
+        'A healthcare branch management system developed for Bayshore Healthcare, enabling real-time form processing, client and staff management, and streamlined branch operations across web and tablet platforms.',
+    thumbnail: 'assets/images/bos/bos.png',
+    bannerImage: 'assets/images/bos/bos_bg.png',
+    techStack: [
+      'Flutter Web & Tablet',
+      'Aidbox FHIR',
+      'Provider',
+      'Clean Architecture',
+      'MongoDB',
+      'Jira',
+      'Postman',
+    ],
+    features: [
+      'Modular UI for employee, client, and expense management',
+      'Real-time validation and digital healthcare documentation',
+      'FHIR-integrated forms with Aidbox',
+      'Secure data workflows and digital signatures',
+      'Cross-platform optimization for web and tablet',
+    ],
+    githubLink: null,
+    liveDemoLink: 'https://dev-bos.onebayshore.ca',
+    link: 'https://dev-bos.onebayshore.ca',
+    contentBlocks: [
+      ContentBlock(type: ContentType.sectionTitle, data: 'Objectives'),
+      ContentBlock(
+        type: ContentType.text,
+        data:
+            'BOS was created to unify and digitize healthcare branch operations for Bayshore. The system focuses on electronic form creation, client intake, employee and expense management, ensuring compliance and efficiency in real-time.',
+      ),
 
-  // Project(
-  //   name: 'Branch Operating System (BOS) – Web App',
-  //   description:
-  //       'Healthcare branch management system developed for Bayshore. Built UI using Flutter Web, integrated Aidbox (FHIR), and delivered modules for client intake, expenses, and staff. Enabled real-time healthcare documentation across branches.',
-  //   thumbnail: 'assets/images/bos.png',
-  //   backgroundImage: 'assets/backgrounds/bos_bg.png',
-  //   link: 'https://dev-bos.onebayshore.ca',
-  //   techStack: ['Flutter Web', 'Aidbox FHIR', 'Real-time sync', 'MongoDB'],
-  //   features: [
-  //     'Client intake & expense management',
-  //     'Staff management modules',
-  //     'Real-time documentation across branches',
-  //   ],
-  //   date: '2023',
-  //   githubLink: null,
-  //   liveDemoLink: 'https://dev-bos.onebayshore.ca',
-  // ),
+      ContentBlock(type: ContentType.sectionTitle, data: 'Process'),
+      ContentBlock(
+        type: ContentType.text,
+        data:
+            'The BOS app was engineered with a scalable UI in Flutter for Web and Tablet use, using real-time form validation and UX-first principles. Collaborated in Agile sprints with cross-functional teams to meet fast-changing healthcare operations and compliance requirements. Modular development and clean architecture were applied for long-term maintainability.',
+      ),
+
+      ContentBlock(type: ContentType.sectionTitle, data: 'How Did We Do This?'),
+      ContentBlock(
+        type: ContentType.bulletList,
+        data: '',
+        bullets: [
+          'Built over 5+ core modules including client intake, employee management, expenses, and exceptions.',
+          'Developed modular UI in Flutter Web and Tablet, increasing form accuracy by 40%.',
+          'Integrated Aidbox FHIR-compatible form builder to streamline healthcare documentation.',
+          'Reduced manual data entry by 60% through structured, reusable components.',
+          'Led frontend implementation with Provider & Clean Architecture principles.',
+          'Enabled digital signing, secure workflows, and seamless real-time API sync (99%+ accuracy).',
+          'Improved onboarding and team velocity with maintainable, testable codebases.',
+          'Contributed to 95% Agile sprint goal completion using tools like Jira, Postman, and Git.',
+        ],
+      ),
+
+      ContentBlock(type: ContentType.image, data: 'assets/images/bos/bos1.png'),
+
+      ContentBlock(type: ContentType.sectionTitle, data: 'Outcomes'),
+      ContentBlock(
+        type: ContentType.text,
+        data:
+            'The BOS app empowered multiple healthcare branches to manage operations digitally with high accuracy, reduced data entry, and ensured real-time documentation compliance with FHIR standards. It continues to support ongoing care delivery across branches effectively.',
+      ),
+      ContentBlock(type: ContentType.image, data: 'assets/images/bos/bos2.png'),
+      ContentBlock(type: ContentType.image, data: 'assets/images/bos/bos3.png'),
+    ],
+  ),
 ];
