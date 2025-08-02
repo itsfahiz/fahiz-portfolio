@@ -1,5 +1,4 @@
 import 'package:fahiz_portfolio/res/constants.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import '../../../view model/responsive.dart';
@@ -12,58 +11,32 @@ class TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.titleMedium!.copyWith(
+      color: Colors.white,
+      fontSize:
+          !Responsive.isDesktop(context)
+              ? Responsive.isLargeMobile(context)
+                  ? 20
+                  : 30
+              : 50,
+      fontWeight: FontWeight.bold,
+    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '$prefix ',
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-            color: Colors.white,
-            fontSize:
-                !Responsive.isDesktop(context)
-                    ? Responsive.isLargeMobile(context)
-                        ? 20
-                        : 30
-                    : 50,
-            fontWeight: FontWeight.bold,
-          ),
+        Text('$prefix ', style: textStyle),
+        ShaderMask(
+          shaderCallback: (bounds) {
+            return const LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [primaryColor, secondaryColor],
+            ).createShader(bounds);
+          },
+          blendMode: BlendMode.srcIn,
+          child: Text(title, style: textStyle),
         ),
-        kIsWeb && Responsive.isDesktop(context)
-            ? ShaderMask(
-              shaderCallback: (bounds) {
-                return const LinearGradient(
-                  end: Alignment.centerRight,
-                  begin: Alignment.centerLeft,
-                  colors: [primaryColor, secondaryColor],
-                ).createShader(bounds);
-              },
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Colors.white,
-                  fontSize:
-                      !Responsive.isDesktop(context)
-                          ? Responsive.isLargeMobile(context)
-                              ? 20
-                              : 30
-                          : 50,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-            : Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Colors.white,
-                fontSize:
-                    !Responsive.isDesktop(context)
-                        ? Responsive.isLargeMobile(context)
-                            ? 20
-                            : 30
-                        : 50,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
       ],
     );
   }
