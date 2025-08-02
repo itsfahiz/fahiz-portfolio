@@ -27,7 +27,7 @@ class TopNavigationBar extends StatelessWidget {
           const Spacer(flex: 2),
           if (!Responsive.isLargeMobile(context)) const NavigationButtonList(),
           const Spacer(flex: 2),
-          const ConnectButton(),
+          const ConnectButtons(),
           const Spacer(),
         ],
       ),
