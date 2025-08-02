@@ -8,6 +8,6 @@ class SocialLinks {
       'https://www.instagram.com/fahiz011?igsh=MXJyMGFxbGdrMmtubw%3D%3D&utm_source=qr';
 
   static const cv =
-      'https://drive.google.com/file/d/19tRleAPPLbv7wm-12ce9XxRZOYCNJa_n/view?usp=sharing';
+      'https://drive.google.com/file/d/1dJ8N7IUqceE1vsPrpeNnLjUDitgEpnow/view?usp=sharing';
   static const whatsapp = 'https://wa.me/917356082122';
 }
