@@ -9,5 +9,5 @@ class SocialLinks {
 
   static const cv =
       'https://drive.google.com/file/d/1dJ8N7IUqceE1vsPrpeNnLjUDitgEpnow/view?usp=sharing';
-  static const whatsapp = 'https://wa.me/917356082122';
+  static const whatsapp = 'https://wa.me/971547842122';
 }
