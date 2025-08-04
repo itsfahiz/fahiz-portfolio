@@ -99,7 +99,7 @@ class ProjectDetailPage extends StatelessWidget {
       builder: (context, constraints) {
         final isMobile = constraints.maxWidth < 600;
 
-        final thumbnail = InkWell(
+        final thumbnail = GestureDetector(
           onTap: () => _launchUrl(project.youtubeVideoUrl!),
           child: Stack(
             alignment: Alignment.center,
