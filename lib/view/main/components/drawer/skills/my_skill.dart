@@ -14,7 +14,7 @@ class MySkills extends StatelessWidget {
         SkillItem(title: 'Dart', image: 'assets/icons/dart.png'),
         SkillItem(title: 'Golang', image: 'assets/icons/golang.png'),
         SkillItem(title: 'Node.js', image: 'assets/icons/nodejs.png'),
-        SkillItem(title: 'React.js', image: 'assets/icons/nodejs.png'),
+        SkillItem(title: 'React.js', image: 'assets/icons/reactjs.png'),
         SkillItem(title: 'PostgreSQL', image: 'assets/icons/postgresql.png'),
         SkillItem(title: 'Firebase', image: 'assets/icons/firebase.png'),
         SkillItem(title: 'MongoDB', image: 'assets/icons/mongodb.png'),

@@ -14,6 +14,11 @@ class Project {
   final String? year;
   final String? overview;
 
+  final String? youtubeVideoUrl;
+  final String? videoCardLogo; // e.g. 'assets/images/mbc/logo.png'
+  final String? videoCardTitle; // 'Stay Connected. Anywhere. Anytime.'
+  final String? videoCardSubtitle; // e.g. 'subtitle text here'
+
   final String thumbnail;
   final String bannerImage;
 
@@ -33,6 +38,10 @@ class Project {
     this.subTitle,
     this.year,
     this.overview,
+    this.youtubeVideoUrl,
+    this.videoCardLogo,
+    this.videoCardTitle,
+    this.videoCardSubtitle,
     this.techStack,
     this.features,
     this.githubLink,
@@ -49,6 +58,15 @@ List<Project> projectList = [
     year: '2021',
     overview:
         'A digital platform for supporting users and their family members with essential everyday home and medical services.',
+
+    //youtube card section starts here ********************
+    youtubeVideoUrl: 'https://youtu.be/0J4rpSbJjOA',
+    videoCardLogo: 'assets/images/mbc/mbc_logo.svg',
+    videoCardTitle: 'Stay Connected. Anywhere. Anytime.',
+    videoCardSubtitle:
+        'It’s never been easier for you and your family to stay connected to your care. Click play and get to know the MyBayshoreCare app.',
+
+    //youtube card section ends here ********************
     thumbnail: 'assets/images/mbc/mbc.png',
     bannerImage: 'assets/images/mbc/mbc_bg.png',
     techStack: ['Flutter', 'Firebase', 'HIPAA Compliance', 'Provider'],

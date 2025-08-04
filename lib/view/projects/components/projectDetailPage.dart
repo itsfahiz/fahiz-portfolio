@@ -1,6 +1,7 @@
 import 'package:fahiz_portfolio/model/project_model.dart';
 import 'package:fahiz_portfolio/res/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectDetailPage extends StatelessWidget {
@@ -54,6 +55,137 @@ class ProjectDetailPage extends StatelessWidget {
       height: 40,
       indent: 0,
       endIndent: 0,
+    );
+  }
+
+  String? getYoutubeThumbnailUrl(String? youtubeUrl) {
+    if (youtubeUrl == null || youtubeUrl.isEmpty) return null;
+
+    try {
+      final uri = Uri.parse(youtubeUrl);
+
+      String? videoId;
+
+      if (uri.host.contains('youtu.be')) {
+        // Short URL - get the first path segment as videoId
+        if (uri.pathSegments.isNotEmpty) {
+          videoId = uri.pathSegments[0];
+        }
+      } else if (uri.host.contains('youtube.com')) {
+        // Standard URL - get 'v' param
+        videoId = uri.queryParameters['v'];
+      }
+
+      if (videoId == null || videoId.isEmpty) return null;
+
+      return 'https://img.youtube.com/vi/$videoId/0.jpg';
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Widget _buildYoutubeCard(BuildContext context) {
+    if (project.youtubeVideoUrl == null) {
+      return const SizedBox.shrink();
+    }
+
+    final thumbnailUrl = getYoutubeThumbnailUrl(project.youtubeVideoUrl);
+
+    if (thumbnailUrl == null) {
+      return const SizedBox.shrink(); // fallback
+    }
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 600;
+
+        final thumbnail = InkWell(
+          onTap: () => _launchUrl(project.youtubeVideoUrl!),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  thumbnailUrl,
+                  width: isMobile ? double.infinity : 500,
+                  height: isMobile ? 240 : 250,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: 48,
+                height: 48,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.play_arrow,
+                  color: Colors.redAccent,
+                  size: 30,
+                ),
+              ),
+            ],
+          ),
+        );
+
+        final info = Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (project.videoCardLogo != null) ...[
+              SvgPicture.asset(
+                project.videoCardLogo!,
+                height: 40,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(height: 12),
+            ],
+            if (project.videoCardTitle != null)
+              Text(
+                project.videoCardTitle!,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+            const SizedBox(height: 8),
+            if (project.videoCardSubtitle != null)
+              Text(
+                project.videoCardSubtitle!,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+          ],
+        );
+
+        return Card(
+          color: Colors.white12,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child:
+                isMobile
+                    ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [thumbnail, const SizedBox(height: 20), info],
+                    )
+                    : Row(
+                      children: [
+                        Expanded(child: thumbnail),
+                        const SizedBox(width: 20),
+                        Expanded(child: info),
+                      ],
+                    ),
+          ),
+        );
+      },
     );
   }
 
@@ -124,6 +256,7 @@ class ProjectDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text(project.name, style: const TextStyle(color: Colors.white)),
         backgroundColor: darkColor,
         elevation: 0,
@@ -194,6 +327,12 @@ class ProjectDetailPage extends StatelessWidget {
                   ),
                 ),
                 _buildDivider(),
+              ],
+
+              if (project.youtubeVideoUrl != null &&
+                  project.youtubeVideoUrl!.isNotEmpty) ...[
+                _buildYoutubeCard(context),
+                const SizedBox(height: 24),
               ],
 
               // Tech Stack Chips
@@ -267,12 +406,19 @@ class ProjectDetailPage extends StatelessWidget {
 
               // Completed Year
               if (project.year != null && project.year!.isNotEmpty) ...[
-                Text(
-                  'Completed: ${project.year}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: bodyTextColor.withOpacity(0.5),
-                    fontStyle: FontStyle.italic,
-                  ),
+                Row(
+                  children: [
+                    Icon(Icons.calendar_today, color: Colors.white70, size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      '${project.year}',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: bodyTextColor.withOpacity(0.5),
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 30),
               ],
