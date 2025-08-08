@@ -1,16 +1,27 @@
 # fahiz_portfolio
 
-A new Flutter project.
+Portfolio of Muhammed Fahiz P — Flutter developer and software engineer specializing in building high-performance, scalable web and mobile applications with clean architecture and polished UI/UX.
+
+## About
+
+This repository contains the source code for my professional Flutter portfolio app. It showcases projects, skills, and experience in Flutter development, demonstrating expertise in full-stack app design and implementation.
+
+## Features
+
+- Responsive Flutter web and mobile app
+- Modern, clean UI with smooth animations
+- Integration of popular packages like GetX, Google Fonts, and Photo View
+- Demonstrates scalable and maintainable code architecture
+- Showcases real projects and development skills
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project locally:
 
-A few resources to get you started if this is your first Flutter project:
+1. Ensure Flutter SDK is installed. See [Flutter installation guide](https://docs.flutter.dev/get-started/install).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/fahiz_portfolio.git
+   cd fahiz_portfolio
+   ```
